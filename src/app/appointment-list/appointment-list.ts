@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Firestore, collectionData, collection, deleteDoc, doc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-appointment-list',
   templateUrl: './appointment-list.html',
   styleUrls: ['./appointment-list.css'],
   imports:[CommonModule]
 })
-export class AppointmentList implements OnInit {
-  appointments: any[] = [];
+export class AppointmentList {
+  appointments$: Observable<any[]>;
 
-  ngOnInit() {
-    this.loadAppointments();
+  constructor(private firestore: Firestore) {
+    const appointmentsRef = collection(this.firestore, 'appointments');
+    this.appointments$ = collectionData(appointmentsRef, { idField: 'id' }) as Observable<any[]>;
   }
 
-  loadAppointments() {
-    this.appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-  }
-
-  deleteAppointment(index: number) {
+  async deleteAppointment(id: string) {
     if (confirm('Are you sure you want to delete this appointment?')) {
-      this.appointments.splice(index, 1);
-      localStorage.setItem('appointments', JSON.stringify(this.appointments));
+      await deleteDoc(doc(this.firestore, `appointments/${id}`));
     }
   }
 }
