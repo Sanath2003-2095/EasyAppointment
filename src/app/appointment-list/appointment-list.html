@@ -1,0 +1,19 @@
+<main>
+  <h2>Appointment List</h2>
+  <div *ngIf="appointments.length === 0" class="empty-list">
+    No appointments found. Book your first appointment!
+  </div>
+  <ul>
+    <li *ngFor="let app of appointments; let i = index">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <b>{{ app.patientName }}</b>
+          <span style="display:block;">Doctor: {{ app.doctor }}</span>
+          <span style="display:block;">Date: {{ app.date }}</span>
+          <span style="display:block;" *ngIf="app.reason">Reason: {{ app.reason }}</span>
+        </div>
+        <button (click)="deleteAppointment(i)" title="Delete Appointment" style="margin-left:15px;">Delete</button>
+      </div>
+    </li>
+  </ul>
+</main>
