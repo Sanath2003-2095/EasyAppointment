@@ -1,0 +1,119 @@
+.auth-container {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #f3faff 0%, #c6e6fb 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #00c6fb44 0%, transparent 70%);
+  animation: floatAnim 6s infinite alternate;
+  z-index: 0;
+}
+
+@keyframes floatAnim {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(40px) scale(1.1); }
+}
+
+.auth-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 6px 30px #0001;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.auth-card h2 {
+  margin-bottom: 1.4rem;
+  color: #0078d4;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #f8fbff;
+  border-radius: 1rem;
+  border: 1.5px solid #c6e6fb;
+  padding: 0.2rem 1rem;
+  margin-bottom: 0.7rem;
+  transition: border 0.2s;
+}
+
+.input-group:focus-within {
+  border-color: #00c6fb;
+  box-shadow: 0 0 0 2px #00c6fb33;
+}
+
+.input-icon {
+  font-size: 1.2rem;
+  margin-right: 0.7rem;
+  color: #0078d4;
+}
+
+.auth-card input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  flex: 1;
+  padding: 0.7rem 0;
+}
+
+.animated-btn {
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #0078d4 0%, #00c6fb 100%);
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 12px #00c6fb22;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px #00c6fb33;
+  background: linear-gradient(90deg, #00c6fb 0%, #0078d4 100%);
+}
+
+.auth-card p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.auth-card a {
+  color: #0078d4;
+  text-decoration: none;
+  font-weight: 600;
+}

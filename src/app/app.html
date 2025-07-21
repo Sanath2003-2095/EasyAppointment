@@ -1,7 +1,13 @@
 <nav>
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-  <a routerLink="/book" routerLinkActive="active">Book Appointment</a>
-  <a routerLink="/list" routerLinkActive="active">Appointment List</a>
+   <a routerLink="/register" routerLinkActive="active">Register</a>
+   <a routerLink="/login" routerLinkActive="active">Login</a>
+   <a routerLink="/book" routerLinkActive="active">Book Appointment</a>
+   <a routerLink="/list" routerLinkActive="active">Appointment List</a>
+   <span *ngIf="isLoggedIn" style="margin-left:auto; font-weight:600; color:#ffffff;">
+     {{ userName }}
+     <button (click)="logout()" style="margin-left:16px; background:#ff5252; color:#fff; border:none; border-radius:8px; padding:6px 16px; font-weight:600; cursor:pointer;">Logout</button>
+   </span>
 </nav>
 <hr>
 <router-outlet></router-outlet>

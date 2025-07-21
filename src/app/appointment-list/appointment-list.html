@@ -5,14 +5,15 @@
   </div>
   <ul>
     <li *ngFor="let app of (appointments$ | async)">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <div>
           <b>{{ app.patientName }}</b>
           <span style="display:block;">Doctor: {{ app.doctor }}</span>
           <span style="display:block;">Date: {{ app.date }}</span>
           <span style="display:block;" *ngIf="app.reason">Reason: {{ app.reason }}</span>
+          <span *ngIf="app.risk" class="risk-badge risk-{{app.risk}}">{{ app.risk | titlecase }}</span>
         </div>
-        <button (click)="deleteAppointment(app.id)" title="Delete Appointment" style="margin-left:15px;">Delete</button>
+        <button (click)="deleteAppointment(app.id)" title="Delete Appointment">Delete</button>
       </div>
     </li>
   </ul>

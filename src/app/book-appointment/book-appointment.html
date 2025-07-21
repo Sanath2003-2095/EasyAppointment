@@ -1,34 +1,43 @@
 <main>
-  <h2>Book Medical Appointment</h2>
+  <div class="progress-bar"></div>
+  <h2>🗓️ Book Medical Appointment</h2>
   <form #f="ngForm" (ngSubmit)="bookAppointment(f)">
     <label>
-      Patient Name:
+      👤 Patient Name:
       <input type="text" [(ngModel)]="patientName" name="patientName" required #patientNameCtrl="ngModel">
       <span *ngIf="patientNameCtrl.invalid && patientNameCtrl.touched" style="color:red;font-size:12px;">
         Required
       </span>
     </label>
     <label>
-      Doctor Name:
+      🩺 Doctor Name:
       <input type="text" [(ngModel)]="doctor" name="doctor" required #doctorCtrl="ngModel">
       <span *ngIf="doctorCtrl.invalid && doctorCtrl.touched" style="color:red;font-size:12px;">
         Required
       </span>
     </label>
     <label>
-      Date:
+      📅 Date:
       <input type="date" [(ngModel)]="date" name="date" required [attr.min]="today" #dateCtrl="ngModel">
       <span *ngIf="dateCtrl.invalid && dateCtrl.touched" style="color:red;font-size:12px;">
         Required
       </span>
     </label>
     <label>
-      Reason:
+      📝 Reason:
       <input type="text" [(ngModel)]="reason" name="reason" required #reasonCtrl="ngModel">
       <span *ngIf="reasonCtrl.invalid && reasonCtrl.touched" style="color:red;font-size:12px;">
         Required
       </span>
     </label>
-    <button type="submit" [disabled]="f.invalid">Book Appointment</button>
+    <label>
+      ⚠️ Risk Level:
+      <select [(ngModel)]="risk" name="risk" required>
+        <option value="mild">Mild</option>
+        <option value="high">High</option>
+        <option value="serious">Serious</option>
+      </select>
+    </label>
+    <button type="submit" [disabled]="f.invalid" class="animated-btn">Book Appointment</button>
   </form>
 </main>

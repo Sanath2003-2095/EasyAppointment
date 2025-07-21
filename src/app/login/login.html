@@ -1,0 +1,21 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>🔐 Login</h2>
+    <form (ngSubmit)="login()">
+      <div class="input-group">
+        <span class="input-icon">📧</span>
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <span class="input-icon">🔑</span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+      </div>
+      <button type="submit" class="animated-btn">Login</button>
+    </form>
+    <p *ngIf="error" style="color: red; margin-top: 8px;">{{ error }}</p>
+    <p>
+      Don't have an account?
+      <a routerLink="/register">Register</a>
+    </p>
+  </div>
+</div>
